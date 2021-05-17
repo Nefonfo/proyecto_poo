@@ -6,7 +6,6 @@
 package Model;
 
 import Db.Database;
-import IModel.IUser;
 import Manager.UserManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +19,7 @@ import org.jasypt.util.text.BasicTextEncryptor;
  *
  * @author Nefonfo
  */
-public class User implements IUser<User, UserManager> {
+public class User implements IModel<User, UserManager> {
     
     private Connection conn;
     
@@ -87,13 +86,11 @@ public class User implements IUser<User, UserManager> {
       return this.objects;
     }
     
-    @Override
     public boolean compare_password(String password) {
         PasswordEncryptor encryptor = new BasicPasswordEncryptor();
         return encryptor.checkPassword(password, this.getPassword());
     }
     
-    @Override
     public String validate(String name, String email, String password, boolean creating) {
         String text = null;
         Pattern name_regex = Pattern.compile("^[A-Za-z0-9]{3,50}");

@@ -5,7 +5,6 @@
  */
 package Controller;
 
-import IController.IUserController;
 import Model.User;
 import java.sql.SQLException;
 import java.util.List;
@@ -16,9 +15,8 @@ import java.util.logging.Logger;
  *
  * @author Nefonfo
  */
-public class UserController implements IUserController<User> {
+public class UserController {
 
-    @Override
     public boolean login(String user, String password) {
         User filter = new User();
         boolean passed;
@@ -34,7 +32,6 @@ public class UserController implements IUserController<User> {
         return passed;
     }
 
-    @Override
     public String register(String name, String email, String password, String cpassword) {
         String info;
 
@@ -76,7 +73,6 @@ public class UserController implements IUserController<User> {
         return info;
     }
 
-    @Override
     public boolean recover_password(String name, String email) {
         boolean can_recover;
         User filter = new User();
@@ -90,7 +86,6 @@ public class UserController implements IUserController<User> {
         return can_recover;
     }
 
-    @Override
     public String update_email(int id, String email) {
         String message;
         try{
@@ -115,7 +110,6 @@ public class UserController implements IUserController<User> {
         return message;
     }
 
-    @Override
     public String update_name(int id, String name) {
         String message;
         try{
@@ -140,7 +134,6 @@ public class UserController implements IUserController<User> {
         return message;
     }
 
-    @Override
     public String update_password(int id, String password, String cpassword) {
         String message;
         if(password.equals(cpassword)){
@@ -166,7 +159,6 @@ public class UserController implements IUserController<User> {
         return message;
     }
 
-    @Override
     public User get_user_by_name(String name) {
         User user;
         User filter;
@@ -181,7 +173,6 @@ public class UserController implements IUserController<User> {
         return user;
     }
 
-    @Override
     public User get_user_by_id(int id) {
         User user;
         try {

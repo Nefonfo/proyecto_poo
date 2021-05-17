@@ -1,5 +1,7 @@
 
-import View.UserView;
+import View.User.WelcomeView;
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +19,7 @@ public class App {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        UserView view = new UserView();
+        new WelcomeView().setVisible(true);
     }
     
 }

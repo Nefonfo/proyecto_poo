@@ -38,11 +38,17 @@ public class UserControllerTest {
     
     @AfterClass
     @BeforeClass
-    public static void setup() {
-        String dir = System.getProperty("user.dir") + "\\";
-        new File(dir + "create_db_error.log").delete();
-        new File(dir + "create_db.log").delete();
-        new File(dir + "javasample.db").delete();
+    public static void setup() throws Exception {
+        User filter = new User();
+        filter.getObjects().all();
+        List<User> users = filter.getObjects().execute();
+        
+        for(User user: users) {
+            user.delete();
+        }
+        
+        filter.getObjects().all();
+        assertEquals(0, filter.getObjects().execute().size());
     }
     
     @Test
@@ -118,4 +124,6 @@ public class UserControllerTest {
             fail("Error al obtener usuario");
         }
     }
+    
+
 }

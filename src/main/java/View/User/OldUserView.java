@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package View.User;
 
 import Controller.UserController;
-import IView.IUserView;
 import Model.User;
 import java.util.Scanner;
 
@@ -14,24 +13,22 @@ import java.util.Scanner;
  *
  * @author Nefonfo
  */
-public class UserView implements IUserView {
+public class OldUserView {
     
     private final Scanner sc;
     private final UserController controller;
     
-    public UserView() {
+    public OldUserView() {
         this.controller = new UserController();
         this.sc = new Scanner(System.in);
         this.welcome();
     }
     
-    @Override
     public void clear_window() {
         System.out.print("\033[H\033[2J");  
         System.out.flush();
     }
-
-    @Override
+    
     public void welcome() {
         int menu;
         this.clear_window();
@@ -58,7 +55,6 @@ public class UserView implements IUserView {
         }
     }
 
-    @Override
     @SuppressWarnings("InfiniteRecursion")
     public void login(String error) {
         String name;
@@ -88,7 +84,6 @@ public class UserView implements IUserView {
 
     }
 
-    @Override
     public void register() {
         String name;
         String email;
@@ -111,7 +106,6 @@ public class UserView implements IUserView {
         this.welcome();
     }
 
-    @Override
     public void recover_step_1() {
         String name;
         String email;
@@ -127,7 +121,6 @@ public class UserView implements IUserView {
         }
     }
 
-    @Override
     public void recover_step_2(int id) {
         String password;
         String cpassword;
@@ -140,7 +133,6 @@ public class UserView implements IUserView {
         this.welcome();
     }
 
-    @Override
     public void profile_menu(int id) {
         int menu;
         
@@ -164,7 +156,6 @@ public class UserView implements IUserView {
         }
     }
 
-    @Override
     public void update(int id, int type) {
         String value;
         String cvalue;

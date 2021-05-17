@@ -5,7 +5,6 @@
  */
 package Manager;
 
-import IManager.IManager;
 import Db.Database;
 import Model.User;
 import java.sql.Connection;
@@ -24,7 +23,7 @@ import static java.util.Map.entry;
  */
 public class UserManager implements IManager<User> {
     
-    String query;
+    private String query;
     private final String table_name = "User";
     private final Connection conn;
     
