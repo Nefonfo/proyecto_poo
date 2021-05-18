@@ -13,3 +13,10 @@ CREATE TABLE [User] (
     [email] TEXT NOT NULL UNIQUE,
     [password] TEXT NOT NULL
 );
+
+CREATE TABLE [Homework] (
+    [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+    [name] TEXT NOT NULL,
+    [content] TEXT,
+    [expires] TEXT NOT NULL
+);

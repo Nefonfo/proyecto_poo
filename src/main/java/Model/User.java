@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.regex.Pattern;
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.jasypt.util.password.PasswordEncryptor;
-import org.jasypt.util.text.BasicTextEncryptor;
 
 /**
  *
