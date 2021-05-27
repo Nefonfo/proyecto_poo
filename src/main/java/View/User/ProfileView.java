@@ -7,6 +7,9 @@ package View.User;
 
 import Controller.UserController;
 import Model.User;
+import View.Homework.MyHomeworks;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -59,6 +62,11 @@ public class ProfileView extends javax.swing.JFrame {
 
         homework_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         homework_button.setText("Tareas");
+        homework_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homework_buttonActionPerformed(evt);
+            }
+        });
 
         workbook_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         workbook_button.setText("Notas");
@@ -244,6 +252,15 @@ public class ProfileView extends javax.swing.JFrame {
         new WelcomeView().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_exit_buttonActionPerformed
+
+    private void homework_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homework_buttonActionPerformed
+        try {
+            new MyHomeworks(this.user).setVisible(true);
+            this.setVisible(false);
+        } catch (Exception ex) {
+            Logger.getLogger(ProfileView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_homework_buttonActionPerformed
 
 
 

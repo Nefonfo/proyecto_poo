@@ -75,7 +75,10 @@ public class UserTest {
     @Test
     public void test_d_find() {
         try {
-            User user = new User().getObjects().get(2);
+            User filter = new User();
+            filter.getObjects().all();
+            
+            User user = new User().getObjects().get(filter.getObjects().execute().get(0).getId());
             assertNotNull(user);
         }catch(Exception e) {
             e.printStackTrace();
@@ -88,6 +91,7 @@ public class UserTest {
         User filter = new User();
         try {
             filter.getObjects().filter("name", "nefo");
+            filter.getObjects().filter("email", "victor@gmail.com");
             assertEquals(filter.getObjects().execute().get(0).name, "nefo");
         } catch(Exception e) {
             e.printStackTrace();

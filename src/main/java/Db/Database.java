@@ -37,6 +37,11 @@ public class Database {
         return conn;
     }
 
+    public static void killConection() throws SQLException {
+        if(conn != null) {
+            conn.close();
+        }
+    }
 
     
 }

@@ -72,7 +72,7 @@ public class UserManager implements IManager<User> {
             this.query = "SELECT * FROM "+this.table_name+" WHERE ";
             first_time = true;
         } else {
-            this.query = this.query + " ";
+            this.query = this.query + " AND ";
             first_time = false;
         }
         
@@ -88,7 +88,7 @@ public class UserManager implements IManager<User> {
                 throw new Exception("The filter key is not valid: " + key);
         } else {
             this.query_values.put(key, value);
-            this.query += (!first_time ? ", ": "") + key + " = ? ";
+            this.query += (!first_time ? " ": "") + key + " = ? ";
         }
         
     }

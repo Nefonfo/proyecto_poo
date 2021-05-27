@@ -1,5 +1,11 @@
+package App;
 
+
+import Controller.HomeworkController;
+import Controller.UserController;
+import Model.User;
 import View.User.WelcomeView;
+import java.util.Date;
 
 
 
@@ -19,6 +25,7 @@ public class App {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
         new WelcomeView().setVisible(true);
     }
     

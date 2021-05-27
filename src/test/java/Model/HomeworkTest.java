@@ -7,7 +7,6 @@ package Model;
 
 import java.util.Date;
 import java.util.List;
-import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
@@ -27,7 +26,18 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class HomeworkTest {
     
-    private static void clear() throws Exception {
+    @BeforeClass
+    public static void setup() throws Exception {
+
+        
+        Homework filter_hw = new Homework();
+        filter_hw.getObjects().all();
+        List<Homework> hws = filter_hw.getObjects().execute();
+        
+        for(Homework hw: hws){
+            hw.delete();
+        }
+        
         User filter = new User();
         filter.getObjects().all();
         List<User> users = filter.getObjects().execute();
@@ -36,12 +46,6 @@ public class HomeworkTest {
             user.delete();
         }
         
-        filter.getObjects().all();
-    }
-    
-    @BeforeClass
-    public static void setup() throws Exception {
-        HomeworkTest.clear();
         User sample1 = new User("Nefonfo", "victor@victor.com", "sample12345");
         User sample2 = new User("Arpa", "arpa@arpa.com", "sample123");
         
@@ -49,21 +53,20 @@ public class HomeworkTest {
         sample2.create();
     }
     
-    @AfterClass
-    public static void close() throws Exception {
-        HomeworkTest.clear();
-    }
-    
     @Test
     public void test_a_create() {
         try {
-            User user = new User().getObjects().get(1);
-            User user2 = new User().getObjects().get(2);
+            User filter = new User();
+            filter.getObjects().all();
+            List<User> u = filter.getObjects().execute();
+            
+            User user = u.get(0);
+            User user2 = u.get(1);
             Homework hw = new Homework(user.getId(), "Matematicas", "Realizar trabajo pag 46", new Date());
             Homework created = hw.create();
             assertNotNull(created.getId());
             assertEquals(created.getUser_id(), user.getId());
-            hw = new Homework(user2.getId(), "Español", "Pag 20", new Date());
+            hw = new Homework(user2.getId(), "Espanol", "Pag 20", new Date());
             created = hw.create();
             assertNotNull(created.getId());
             assertEquals(created.getUser_id(), user2.getId());
@@ -93,22 +96,9 @@ public class HomeworkTest {
         }
     }
     
-    @Test
-    public void test_d_find() {
-        try {
-            Homework hw = new Homework().getObjects().get(1);
-            Homework hw2 = new Homework().getObjects().get(2);
 
-            assertEquals(hw.name, "Matematicas");
-            assertEquals(hw2.name, "Español");
-        }catch(Exception e) {
-            e.printStackTrace();
-            fail("Cannot find one hw");
-        }
-    }
-    
     @Test
-    public void test_e_filter(){
+    public void test_d_filter(){
         try {
             User user = new User();
             user.getObjects().filter("name", "Nefonfo");
@@ -125,6 +115,33 @@ public class HomeworkTest {
     }
     
     @Test
+    public void test_e_find() {
+        try {
+            int id, id2;
+            
+            User filter = new User();
+            filter.getObjects().all();
+            List<User> u = filter.getObjects().execute();
+            
+            Homework filter_hw = new Homework();
+            filter_hw.getObjects().filter("user_id", u.get(0).getId());
+            id = filter_hw.getObjects().execute().get(0).getId();
+            
+            filter_hw.getObjects().filter("user_id", u.get(1).getId());
+            id2 = filter_hw.getObjects().execute().get(0).getId();
+            
+            Homework hw = new Homework().getObjects().get(id);
+            Homework hw2 = new Homework().getObjects().get(id2);
+
+            assertEquals(hw.name, "Matematicas");
+            assertEquals(hw2.name, "Espanol");
+        }catch(Exception e) {
+            e.printStackTrace();
+            fail("Cannot find one hw");
+        }
+    }
+    
+    @Test
     public void test_f_delete() {
     
         try {
@@ -132,8 +149,10 @@ public class HomeworkTest {
             user.getObjects().filter("name", "Arpa");
             user = user.getObjects().execute().get(0);
 
-            Homework hw = new Homework().getObjects().get(1);
-            assertEquals(hw.delete(), true);
+            Homework hw = new Homework();
+            hw.getObjects().filter("user_id", user.getId());
+            hw = hw.getObjects().execute().get(0);
+            hw.delete();
 
             hw.getObjects().filter("user_id", user.getId());
             List<Homework> hws = hw.getObjects().execute();

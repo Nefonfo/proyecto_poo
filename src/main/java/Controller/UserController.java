@@ -6,10 +6,7 @@
 package Controller;
 
 import Model.User;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -25,7 +22,6 @@ public class UserController {
             List<User> get_user = filter.getObjects().execute();
             passed = (get_user.size() == 1) && (get_user.get(0).compare_password(password));
         } catch(Exception e ){
-            String eee = e.toString();
             passed = false;
         }
         

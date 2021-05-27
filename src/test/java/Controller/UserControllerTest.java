@@ -16,10 +16,7 @@ package Controller;
  */
 
 import Model.User;
-import java.io.File;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -84,13 +81,18 @@ public class UserControllerTest {
     }
 
     @Test
-    public void test_d_update_email() {
-        assertEquals("El correo ya esta en uso", this.controller.update_email(1, "sample@sample.com"));
-        assertEquals("EL CORREO NO ES VALIDO", this.controller.update_email(1, "samplesample.com"));
-        assertEquals("Cambiado Correctamente", this.controller.update_email(1, "paquita@paquita.com"));
+    public void test_d_update_email() throws Exception {
+        
+        User filter = new User();
+        filter.getObjects().all();
+        int id = filter.getObjects().execute().get(0).getId();
+        
+        assertEquals("El correo ya esta en uso", this.controller.update_email(id, "sample@sample.com"));
+        assertEquals("EL CORREO NO ES VALIDO", this.controller.update_email(id, "samplesample.com"));
+        assertEquals("Cambiado Correctamente", this.controller.update_email(id, "paquita@paquita.com"));
         
         try {
-            User user = new User().getObjects().get(1);    
+            User user = new User().getObjects().get(id);    
             assertEquals("paquita@paquita.com", user.email);
         }catch(Exception e) {
             fail("Error al obtener usuario");
@@ -98,13 +100,18 @@ public class UserControllerTest {
     }
     
     @Test
-    public void test_e_update_name() {
-        assertEquals("El nombre ya esta en uso", this.controller.update_name(1, "Nefonfo"));
-        assertEquals("EL NOMBRE DEBE SER ALFANUMERICO DE 3-50 CARACTERES", this.controller.update_name(1, "w"));
-        assertEquals("Cambiado Correctamente", this.controller.update_name(1, "Paquita"));
+    public void test_e_update_name() throws Exception {
+        
+        User filter = new User();
+        filter.getObjects().all();
+        int id = filter.getObjects().execute().get(0).getId();
+        
+        assertEquals("El nombre ya esta en uso", this.controller.update_name(id, "Nefonfo"));
+        assertEquals("EL NOMBRE DEBE SER ALFANUMERICO DE 3-50 CARACTERES", this.controller.update_name(id, "w"));
+        assertEquals("Cambiado Correctamente", this.controller.update_name(id, "Paquita"));
         
         try {
-            User user = new User().getObjects().get(1);    
+            User user = new User().getObjects().get(id);    
             assertEquals("Paquita", user.name);
         }catch(Exception e) {
             fail("Error al obtener usuario");
@@ -112,13 +119,18 @@ public class UserControllerTest {
     }
     
     @Test
-    public void test_f_update_password() {
-        assertEquals("Las contraseñas no coinciden", this.controller.update_password(1, "Saaaaa32", "eqwwq212"));
-        assertEquals("LA CONTRASEÑA DEBE SER ALFANUMERICA DE 8-50 CARACTERES", this.controller.update_password(1, "w", "w"));
-        assertEquals("Cambiado Correctamente", this.controller.update_password(1, "MonitaChina0w0", "MonitaChina0w0"));
+    public void test_f_update_password() throws Exception {
+        
+        User filter = new User();
+        filter.getObjects().all();
+        int id = filter.getObjects().execute().get(0).getId();
+        
+        assertEquals("Las contraseñas no coinciden", this.controller.update_password(id, "Saaaaa32", "eqwwq212"));
+        assertEquals("LA CONTRASEÑA DEBE SER ALFANUMERICA DE 8-50 CARACTERES", this.controller.update_password(id, "w", "w"));
+        assertEquals("Cambiado Correctamente", this.controller.update_password(id, "MonitaChina0w0", "MonitaChina0w0"));
         
         try {
-            User user = new User().getObjects().get(1);    
+            User user = new User().getObjects().get(id);    
             assertEquals("Paquita", user.name);
         }catch(Exception e) {
             fail("Error al obtener usuario");

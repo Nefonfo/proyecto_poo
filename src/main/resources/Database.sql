@@ -7,6 +7,9 @@
  * Author:  Nefonfo
  * Created: 6 may. 2021
  */
+
+PRAGMA foreign_keys = ON;
+
 CREATE TABLE [User] (
     [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
     [name] TEXT NOT NULL UNIQUE,
@@ -16,6 +19,7 @@ CREATE TABLE [User] (
 
 CREATE TABLE [Homework] (
     [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+    [user_id] INTEGER REFERENCES [User](id) ON DELETE CASCADE,
     [name] TEXT NOT NULL,
     [content] TEXT,
     [expires] TEXT NOT NULL
