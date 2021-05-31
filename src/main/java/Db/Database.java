@@ -12,7 +12,7 @@ public class Database {
     private String dir;
 
     public Database() {
-        this.dir = System.getProperty("user.dir") + "\\src\\main\\resources";
+        this.dir = this.getClass().getClassLoader().getResource("Database.sql").getPath();
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:javasample.db");
             conn.createStatement().executeQuery("SELECT * FROM User;");
@@ -20,7 +20,7 @@ public class Database {
             try {
                 Connection connhelp = DriverManager.getConnection("jdbc:sqlite:javasample.db");
                 ScriptRunner runner = new ScriptRunner(connhelp, false, false);
-                runner.runScript(new BufferedReader(new FileReader(this.dir+"\\database.sql")));
+                runner.runScript(new BufferedReader(new FileReader(this.dir)));
                 new Database();
             } catch(Exception i) {
                 System.out.println("ERROR CRITICO");

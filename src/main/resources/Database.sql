@@ -24,3 +24,10 @@ CREATE TABLE [Homework] (
     [content] TEXT,
     [expires] TEXT NOT NULL
 );
+
+CREATE TABLE [Workbook] (
+    [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+    [user_id] INTEGER REFERENCES [User](id) ON DELETE CASCADE,
+    [name] TEXT NOT NULL,
+    [content] TEXT
+);

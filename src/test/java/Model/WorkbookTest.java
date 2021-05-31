@@ -21,10 +21,9 @@ import org.junit.runners.MethodSorters;
  *
  * @author Nefonfo
  */
-
 @RunWith(JUnit4.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class HomeworkTest {
+public class WorkbookTest {
     
     @BeforeClass
     public static void setup() throws Exception {
@@ -70,37 +69,37 @@ public class HomeworkTest {
             
             User user = u.get(0);
             User user2 = u.get(1);
-            Homework hw = new Homework(user.getId(), "Matematicas", "Realizar trabajo pag 46", new Date());
-            Homework created = hw.create();
+            Workbook wb = new Workbook(user.getId(), "Matematicas", "Realizar trabajo pag 46");
+            Workbook created = wb.create();
             assertNotNull(created.getId());
             assertEquals(created.getUser_id(), user.getId());
-            hw = new Homework(user2.getId(), "Espanol", "Pag 20", new Date());
-            created = hw.create();
+            wb = new Workbook(user2.getId(), "Espanol", "Pag 20");
+            created = wb.create();
             assertNotNull(created.getId());
             assertEquals(created.getUser_id(), user2.getId());
         }catch(Exception e) {
             e.printStackTrace();
-            fail("Cannot create hw");
+            fail("Cannot create wb");
         }
     }
     
     @Test(expected = Exception.class)
     public void test_b_cannot_create() throws Exception {
         User user = new User().getObjects().get(1);
-        Homework hw = new Homework(321321, "Matematicas", "Realizar trabajo pag 46", new Date());
-        Homework created = hw.create();
+        Workbook wb = new Workbook(321321, "Matematicas", "Realizar trabajo pag 46");
+        Workbook created = wb.create();
     }
     
     @Test
     public void test_c_find_all() {
         try {
-            Homework hw = new Homework();
-            hw.getObjects().all();
-            List<Homework> hws = hw.getObjects().execute();
-            assertEquals(hws.size(), 2);
+            Workbook wb = new Workbook();
+            wb.getObjects().all();
+            List<Workbook> wbs = wb.getObjects().execute();
+            assertEquals(wbs.size(), 2);
         } catch(Exception e) {
             e.printStackTrace();
-            fail("Cannot find all hw");
+            fail("Cannot find all wb");
         }
     }
     
@@ -113,12 +112,12 @@ public class HomeworkTest {
             
             user = user.getObjects().execute().get(0);
             
-            Homework filter = new Homework();
+            Workbook filter = new Workbook();
             filter.getObjects().filter("user_id", user.getId());
             assertEquals(1, filter.getObjects().execute().size());
         }catch(Exception e) {
             e.printStackTrace();
-            fail("Cannot filter hw");
+            fail("Cannot filter wb");
         }
     }
     
@@ -131,21 +130,21 @@ public class HomeworkTest {
             filter.getObjects().all();
             List<User> u = filter.getObjects().execute();
             
-            Homework filter_hw = new Homework();
-            filter_hw.getObjects().filter("user_id", u.get(0).getId());
-            id = filter_hw.getObjects().execute().get(0).getId();
+            Workbook filter_wb = new Workbook();
+            filter_wb.getObjects().filter("user_id", u.get(0).getId());
+            id = filter_wb.getObjects().execute().get(0).getId();
             
-            filter_hw.getObjects().filter("user_id", u.get(1).getId());
-            id2 = filter_hw.getObjects().execute().get(0).getId();
+            filter_wb.getObjects().filter("user_id", u.get(1).getId());
+            id2 = filter_wb.getObjects().execute().get(0).getId();
             
-            Homework hw = new Homework().getObjects().get(id);
-            Homework hw2 = new Homework().getObjects().get(id2);
+            Workbook wb = new Workbook().getObjects().get(id);
+            Workbook wb2 = new Workbook().getObjects().get(id2);
 
-            assertEquals(hw.name, "Matematicas");
-            assertEquals(hw2.name, "Espanol");
+            assertEquals(wb.name, "Matematicas");
+            assertEquals(wb2.name, "Espanol");
         }catch(Exception e) {
             e.printStackTrace();
-            fail("Cannot find one hw");
+            fail("Cannot find one wb");
         }
     }
     
@@ -157,17 +156,17 @@ public class HomeworkTest {
             user.getObjects().filter("name", "Arpa");
             user = user.getObjects().execute().get(0);
 
-            Homework hw = new Homework();
-            hw.getObjects().filter("user_id", user.getId());
-            hw = hw.getObjects().execute().get(0);
-            hw.delete();
+            Workbook wb = new Workbook();
+            wb.getObjects().filter("user_id", user.getId());
+            wb = wb.getObjects().execute().get(0);
+            wb.delete();
 
-            hw.getObjects().filter("user_id", user.getId());
-            List<Homework> hws = hw.getObjects().execute();
+            wb.getObjects().filter("user_id", user.getId());
+            List<Workbook> hws = wb.getObjects().execute();
             assertEquals(hws.size(), 0);
         } catch(Exception e) {
             e.printStackTrace();
-            fail("Cannot delete hw");
+            fail("Cannot delete wb");
         }
     }
     
