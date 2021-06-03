@@ -79,16 +79,14 @@ public class HomeworkTest {
             assertNotNull(created.getId());
             assertEquals(created.getUser_id(), user2.getId());
         }catch(Exception e) {
-            e.printStackTrace();
             fail("Cannot create hw");
         }
     }
     
     @Test(expected = Exception.class)
     public void test_b_cannot_create() throws Exception {
-        User user = new User().getObjects().get(1);
         Homework hw = new Homework(321321, "Matematicas", "Realizar trabajo pag 46", new Date());
-        Homework created = hw.create();
+        hw.create();
     }
     
     @Test
@@ -99,7 +97,6 @@ public class HomeworkTest {
             List<Homework> hws = hw.getObjects().execute();
             assertEquals(hws.size(), 2);
         } catch(Exception e) {
-            e.printStackTrace();
             fail("Cannot find all hw");
         }
     }
@@ -117,7 +114,6 @@ public class HomeworkTest {
             filter.getObjects().filter("user_id", user.getId());
             assertEquals(1, filter.getObjects().execute().size());
         }catch(Exception e) {
-            e.printStackTrace();
             fail("Cannot filter hw");
         }
     }
@@ -144,7 +140,6 @@ public class HomeworkTest {
             assertEquals(hw.name, "Matematicas");
             assertEquals(hw2.name, "Espanol");
         }catch(Exception e) {
-            e.printStackTrace();
             fail("Cannot find one hw");
         }
     }
@@ -166,7 +161,6 @@ public class HomeworkTest {
             List<Homework> hws = hw.getObjects().execute();
             assertEquals(hws.size(), 0);
         } catch(Exception e) {
-            e.printStackTrace();
             fail("Cannot delete hw");
         }
     }

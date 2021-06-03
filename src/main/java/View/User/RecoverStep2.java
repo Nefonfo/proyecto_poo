@@ -15,10 +15,11 @@ import javax.swing.JOptionPane;
 public class RecoverStep2 extends javax.swing.JFrame {
     
     private final UserController controller = new UserController();
-    private int id;
+    private final int id;
     
     /**
      * Creates new form RecoverStep2
+     * @param id
      */
     public RecoverStep2(int id) {
         initComponents();

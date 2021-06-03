@@ -27,7 +27,7 @@ public class UserManager implements IManager<User> {
     private final String table_name = "User";
     private final Connection conn;
     
-    private Map<String, Object> query_values = new HashMap<String, Object>();;
+    private Map<String, Object> query_values = new HashMap<>();
     private final Map<String, String> valid_values = Map.ofEntries(
             entry("id", "Integer"),
             entry("name", "String"),

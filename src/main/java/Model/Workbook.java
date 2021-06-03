@@ -27,7 +27,7 @@ public class Workbook implements IModel<Workbook, WorkbookManager>{
     
     private final WorkbookManager objects = new WorkbookManager();
     private final String table_name = "Workbook";
-    private boolean can_save;
+    private final boolean can_save;
     private boolean is_pristine;
     
     public Workbook() {

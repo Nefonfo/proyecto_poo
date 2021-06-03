@@ -10,7 +10,8 @@ import java.sql.SQLException;
 /**
  *
  * @author Nefonfo
- * @param <T, O>
+ * @param <T>
+ * @param <O>
  */
 public interface IModel<T, O> {
     public O getObjects();

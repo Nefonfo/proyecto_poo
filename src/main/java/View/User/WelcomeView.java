@@ -5,10 +5,6 @@
  */
 package View.User;
 
-import Controller.UserController;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-
 /**
  *
  * @author Nefonfo
@@ -18,8 +14,6 @@ public class WelcomeView extends javax.swing.JFrame {
     /**
      * Creates new form WelcomeView
      */
-    
-    private final UserController controller = new UserController();
     
     public WelcomeView() {
         initComponents();
@@ -120,10 +114,8 @@ public class WelcomeView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new WelcomeView().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new WelcomeView().setVisible(true);
         });
     }
 

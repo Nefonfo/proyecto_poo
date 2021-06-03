@@ -27,7 +27,7 @@ public class HomeworkManager implements IManager<Homework> {
     private final String table_name = "Homework";
     private final Connection conn;
     
-    private Map<String, Object> query_values = new HashMap<String, Object>();
+    private Map<String, Object> query_values = new HashMap<>();
     private final Map<String, String> valid_values = Map.ofEntries(
             entry("id", "Integer"),
             entry("user_id", "ForgeinKey:User"),

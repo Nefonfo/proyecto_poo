@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.Homework;
+package View.Workbook;
 
-import Controller.HomeworkController;
-import Model.Homework;
+import Controller.WorkbookController;
+import Model.Workbook;
 import Model.User;
 import View.User.ProfileView;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,36 +20,26 @@ import javax.swing.JOptionPane;
  *
  * @author Nefonfo
  */
-public class MyHomeworks extends javax.swing.JFrame {
+public class MyWorkbooks extends javax.swing.JFrame {
 
     private final User user;
-    private final List<Homework> hws;
+    private final List<Workbook> wbs;
     
-    private final HomeworkController controller = new HomeworkController();
+    private final WorkbookController controller = new WorkbookController();
     /**
      * Creates new form MyHomeworks
      * @param user
      * @throws java.lang.Exception
      */
     
-    public MyHomeworks(User user) throws Exception {
+    public MyWorkbooks(User user) throws Exception {
         initComponents();
         this.user = user;
         this.title_label.setText(this.title_label.getText() + this.user.name);
         this.cleanJList();
-        this.hws = this.controller.get_all_user_homeworks(this.user.getId());
-        hws.forEach(homework -> {
-            this.fillModel(
-                    "TAREA"+
-                            " - "
-                            +homework.name+
-                            " - EXPIRA EN: "
-                            +ChronoUnit.DAYS.between(
-                                    new Date().toInstant(),
-                                    homework.getExpires().toInstant()
-                            )+
-                            "dias"
-            );
+        this.wbs = this.controller.get_all_user_workbooks(this.user.getId());
+        wbs.forEach((Workbook workbook) -> {
+            MyWorkbooks.this.fillModel("LIBRETA -> "+ workbook.name);
         });  
     }
 
@@ -65,7 +53,7 @@ public class MyHomeworks extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        homework_list = new javax.swing.JList<>();
+        workbook_list = new javax.swing.JList<>();
         title_label = new javax.swing.JLabel();
         return_button = new javax.swing.JButton();
         select_button = new javax.swing.JButton();
@@ -74,16 +62,16 @@ public class MyHomeworks extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        homework_list.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        homework_list.setModel(new javax.swing.AbstractListModel<String>() {
+        workbook_list.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        workbook_list.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(homework_list);
+        jScrollPane1.setViewportView(workbook_list);
 
+        title_label.setText("Las libretas de: ");
         title_label.setFont(new java.awt.Font("Leelawadee UI", 3, 18)); // NOI18N
-        title_label.setText("Las tareas de: ");
 
         return_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         return_button.setText("Regresar");
@@ -110,7 +98,7 @@ public class MyHomeworks extends javax.swing.JFrame {
         });
 
         create_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        create_button.setText("Crear Tarea");
+        create_button.setText("Crear libreta");
         create_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 create_buttonActionPerformed(evt);
@@ -169,52 +157,52 @@ public class MyHomeworks extends javax.swing.JFrame {
 
     private void select_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_buttonActionPerformed
 
-        if(this.homework_list.getSelectedIndex() >= 0){
-            new ViewHomework(this.hws.get(this.homework_list.getSelectedIndex()).getId(), this.user).setVisible(true);
+        if(this.workbook_list.getSelectedIndex() >= 0){
+            new ViewWorkbook(this.wbs.get(this.workbook_list.getSelectedIndex()).getId(), this.user).setVisible(true);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna tarea");
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna libreta");
         }
     }//GEN-LAST:event_select_buttonActionPerformed
 
     private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
-        int index = this.homework_list.getSelectedIndex();
+        int index = this.workbook_list.getSelectedIndex();
         if(index >= 0) {
             int delete = JOptionPane.showConfirmDialog(
                     this, 
                     "Deseas eliminar:",
-                    this.hws.get(index).name,
+                    this.wbs.get(index).name,
                     JOptionPane.YES_NO_OPTION
             );
             
             if(delete == 0) {
                 try {
-                    String result = this.controller.delete_hw(this.hws.get(index).getId(), this.user.getId());
+                    String result = this.controller.delete_wb(this.wbs.get(index).getId(), this.user.getId());
                     JOptionPane.showMessageDialog(this, result);
-                    new MyHomeworks(user).setVisible(true);
+                    new MyWorkbooks(user).setVisible(true);
                     this.setVisible(false);
                 } catch (Exception ex) {
-                    Logger.getLogger(MyHomeworks.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MyWorkbooks.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
     }//GEN-LAST:event_delete_buttonActionPerformed
 
     private void create_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_create_buttonActionPerformed
-        new CreateHomework(this.user).setVisible(true);
+        new CreateWorkbook(this.user).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_create_buttonActionPerformed
 
     public DefaultListModel cleanJList() {
         DefaultListModel model = new DefaultListModel();
         
-        this.homework_list.setModel(model);
+        this.workbook_list.setModel(model);
         
         return model;
     }
     
     public DefaultListModel fillModel(String data) {
-        DefaultListModel model = (DefaultListModel) homework_list.getModel();
+        DefaultListModel model = (DefaultListModel) workbook_list.getModel();
         model.addElement(data);
         
         return model;
@@ -229,10 +217,10 @@ public class MyHomeworks extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton create_button;
     private javax.swing.JButton delete_button;
-    private javax.swing.JList<String> homework_list;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton return_button;
     private javax.swing.JButton select_button;
     private javax.swing.JLabel title_label;
+    private javax.swing.JList<String> workbook_list;
     // End of variables declaration//GEN-END:variables
 }

@@ -161,10 +161,8 @@ public class RecoverStep1 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RecoverStep1().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new RecoverStep1().setVisible(true);
         });
     }
 

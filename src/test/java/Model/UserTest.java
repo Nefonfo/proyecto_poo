@@ -5,8 +5,6 @@
  */
 package Model;
 
-import Model.User;
-import java.io.File;
 import java.util.List;
 
 import org.junit.*;
@@ -48,7 +46,6 @@ public class UserTest {
             assertNotNull(created_user_2.getId());
             
         } catch(Exception e) {
-            e.printStackTrace();
             fail("Cannot Create user");
         }
     }
@@ -67,7 +64,6 @@ public class UserTest {
             List<User> users = user_manager.getObjects().execute();
             assertEquals(users.size(), 2);
         }catch(Exception e) {
-            e.printStackTrace();
             fail("Cannot find user");
         }
     }
@@ -81,7 +77,6 @@ public class UserTest {
             User user = new User().getObjects().get(filter.getObjects().execute().get(0).getId());
             assertNotNull(user);
         }catch(Exception e) {
-            e.printStackTrace();
             fail("Cannot find user");
         }
     }
@@ -94,7 +89,6 @@ public class UserTest {
             filter.getObjects().filter("email", "victor@gmail.com");
             assertEquals(filter.getObjects().execute().get(0).name, "nefo");
         } catch(Exception e) {
-            e.printStackTrace();
             fail("Cannot filter users");
         }
     }
@@ -111,7 +105,6 @@ public class UserTest {
             filter.getObjects().filter("name", "nefo");
             assertEquals(filter.getObjects().execute().size(), 0);
         } catch(Exception e) {
-            e.printStackTrace();
             fail("Cannot filter users");
         }
     }

@@ -125,7 +125,7 @@ public class User implements IModel<User, UserManager> {
         if(!this.is_pristine) {
             pstmt.setInt(4, this.id);
         }
-        boolean save = pstmt.execute();
+        pstmt.execute();
         this.getObjects().filter("email", email);
         User user = this.getObjects().execute().get(0);
         return user;

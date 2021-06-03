@@ -3,28 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.Homework;
+package View.Workbook;
 
-import Controller.HomeworkController;
+import Controller.WorkbookController;
 import Model.User;
 import View.User.LoginView;
-import java.time.ZoneId;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Nefonfo
  */
-public class CreateHomework extends javax.swing.JFrame {
+public class CreateWorkbook extends javax.swing.JFrame {
     
     private final User user;
-    private final HomeworkController controller = new HomeworkController();
+    private final WorkbookController controller = new WorkbookController();
     /**
      * Creates new form CreateHomework
      * @param user
      */
-    public CreateHomework(User user) {
+    public CreateWorkbook(User user) {
         this.user = user;
         initComponents();
         this.title_label.setText(this.title_label.getText()+ " " + this.user.name);
@@ -42,8 +40,6 @@ public class CreateHomework extends javax.swing.JFrame {
         title_label = new javax.swing.JLabel();
         name_input = new javax.swing.JTextField();
         name_label = new javax.swing.JLabel();
-        date_label = new javax.swing.JLabel();
-        date_input = new com.github.lgooddatepicker.components.DatePicker();
         content_label = new javax.swing.JLabel();
         content_input = new javax.swing.JScrollPane();
         content_inputx = new javax.swing.JTextArea();
@@ -52,36 +48,32 @@ public class CreateHomework extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        title_label.setText("Nueva libreta para: ");
         title_label.setFont(new java.awt.Font("Leelawadee UI", 3, 14)); // NOI18N
-        title_label.setText("Nueva tarea para: ");
 
         name_input.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
 
+        name_label.setText("Nombre de la libreta:");
         name_label.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        name_label.setText("Nombre de la tarea:");
 
-        date_label.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        date_label.setText("Fecha de Expiración:");
-
-        content_label.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         content_label.setText("Contenido:");
+        content_label.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
 
         content_inputx.setColumns(20);
-        content_inputx.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         content_inputx.setRows(5);
+        content_inputx.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         content_input.setViewportView(content_inputx);
 
-        return_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         return_button.setText("Regresar");
+        return_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         return_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 return_buttonActionPerformed(evt);
             }
         });
 
-        save_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         save_button.setText("Guardar");
-        save_button.setActionCommand("Guardar");
+        save_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         save_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 save_buttonActionPerformed(evt);
@@ -95,16 +87,12 @@ public class CreateHomework extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(content_input)
+                    .addComponent(content_input, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
                     .addComponent(title_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(name_label)
-                            .addComponent(date_label))
+                        .addComponent(name_label)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(date_input, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                            .addComponent(name_input)))
+                        .addComponent(name_input))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(content_label)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -124,13 +112,9 @@ public class CreateHomework extends javax.swing.JFrame {
                     .addComponent(name_input, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name_label))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(date_label)
-                    .addComponent(date_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(content_label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(content_input, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(content_input, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(return_button)
@@ -143,7 +127,7 @@ public class CreateHomework extends javax.swing.JFrame {
 
     private void return_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_return_buttonActionPerformed
         try {
-            new MyHomeworks(this.user).setVisible(true);
+            new MyWorkbooks(this.user).setVisible(true);
         } catch (Exception ex) {
             new LoginView().setVisible(true);
         }
@@ -154,15 +138,9 @@ public class CreateHomework extends javax.swing.JFrame {
         String message;
         try {
             
-            message = this.controller.create_hw(this.user.getId(),
+            message = this.controller.create_wb(this.user.getId(),
                     this.name_input.getText(),
-                    this.content_inputx.getText(),
-                    Date.from(
-                            this.date_input.getDate().atStartOfDay(
-                                    ZoneId.systemDefault()
-                            ).toInstant()
-                    )
-            );
+                    this.content_inputx.getText());
             
         } catch (Exception ex) {
             message = ex.getMessage();
@@ -171,7 +149,7 @@ public class CreateHomework extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, message);
         
         try {
-            new MyHomeworks(user).setVisible(true);
+            new MyWorkbooks(user).setVisible(true);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
             new LoginView().setVisible(true);
@@ -185,8 +163,6 @@ public class CreateHomework extends javax.swing.JFrame {
     private javax.swing.JScrollPane content_input;
     private javax.swing.JTextArea content_inputx;
     private javax.swing.JLabel content_label;
-    private com.github.lgooddatepicker.components.DatePicker date_input;
-    private javax.swing.JLabel date_label;
     private javax.swing.JTextField name_input;
     private javax.swing.JLabel name_label;
     private javax.swing.JToggleButton return_button;

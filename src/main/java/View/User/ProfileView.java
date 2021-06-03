@@ -8,6 +8,7 @@ package View.User;
 import Controller.UserController;
 import Model.User;
 import View.Homework.MyHomeworks;
+import View.Workbook.MyWorkbooks;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -19,9 +20,10 @@ import javax.swing.JOptionPane;
 public class ProfileView extends javax.swing.JFrame {
 
     private final UserController controller = new UserController();
-    private User user;
+    private final User user;
     /**
      * Creates new form ProfileView
+     * @param id
      */
     public ProfileView(int id) {
         initComponents();
@@ -69,7 +71,12 @@ public class ProfileView extends javax.swing.JFrame {
         });
 
         workbook_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        workbook_button.setText("Notas");
+        workbook_button.setText("Libretas");
+        workbook_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                workbook_buttonActionPerformed(evt);
+            }
+        });
 
         exit_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         exit_button.setText("Salir");
@@ -203,18 +210,18 @@ public class ProfileView extends javax.swing.JFrame {
         String validation;
         String response;
         
-        if(!String.valueOf(this.password_input.getPassword()).equals("")){
+        if(String.valueOf(this.password_input.getPassword()).equals("")){
             validation = this.user.validate(
                     this.name_input.getText(),
                     this.email_input.getText(),
-                    String.valueOf(this.password_input.getPassword()), 
-                    true);
+                    "",
+                    false);
         } else {
             validation = this.user.validate(
                     this.name_input.getText(),
                     this.email_input.getText(),
-                    "", 
-                    false);
+                    String.valueOf(this.password_input.getPassword()),
+                    true);
         }
         if(validation == null) {
             
@@ -261,6 +268,15 @@ public class ProfileView extends javax.swing.JFrame {
             Logger.getLogger(ProfileView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_homework_buttonActionPerformed
+
+    private void workbook_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workbook_buttonActionPerformed
+        try {
+            new MyWorkbooks(this.user).setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(ProfileView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setVisible(false);
+    }//GEN-LAST:event_workbook_buttonActionPerformed
 
 
 

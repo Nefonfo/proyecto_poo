@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,7 +32,7 @@ public class Homework implements IModel<Homework, HomeworkManager>{
     
     private final HomeworkManager objects = new HomeworkManager();
     private final String table_name = "Homework";
-    private boolean can_save;
+    private final boolean can_save;
     private boolean is_pristine;
     
     public Homework() {
