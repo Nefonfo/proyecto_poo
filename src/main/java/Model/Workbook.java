@@ -86,7 +86,7 @@ public class Workbook implements IModel<Workbook, WorkbookManager>{
         
         User user = new User().getObjects().get(user_id);
         if(user == null && this.is_pristine) {
-            response = "El usuario al que se le quiere registrar la tarea no existe";
+            response = "El usuario al que se le quiere registrar la libreta no existe";
         } else if(!name_validation.matcher(name).matches()) {
             response = "El nombre debe ser alfanumérico con espacios de 3-50 caracteres";
         }
