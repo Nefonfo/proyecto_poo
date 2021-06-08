@@ -27,6 +27,7 @@ public class RecoverStep2 extends javax.swing.JFrame {
         this.user_label.setText(
                 this.user_label.getText() + this.controller.get_user_by_id(this.id).name
         );
+        this.setResizable(false);
     }
 
     /**
@@ -38,20 +39,29 @@ public class RecoverStep2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        user_label = new javax.swing.JLabel();
         password_label = new javax.swing.JLabel();
         cpassword_label = new javax.swing.JLabel();
         password_input = new javax.swing.JPasswordField();
         cpassword_input = new javax.swing.JPasswordField();
         change_password_button = new javax.swing.JButton();
-        user_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(55, 65, 81));
+
+        user_label.setFont(new java.awt.Font("Leelawadee UI", 3, 18)); // NOI18N
+        user_label.setForeground(new java.awt.Color(255, 255, 255));
+        user_label.setText("Cambiar contraseña de: ");
+
         password_label.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        password_label.setForeground(new java.awt.Color(255, 255, 255));
         password_label.setLabelFor(password_input);
         password_label.setText("Contraseña");
 
         cpassword_label.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        cpassword_label.setForeground(new java.awt.Color(255, 255, 255));
         cpassword_label.setLabelFor(cpassword_input);
         cpassword_label.setText("Confirmar contraseña");
 
@@ -59,56 +69,66 @@ public class RecoverStep2 extends javax.swing.JFrame {
 
         cpassword_input.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
 
+        change_password_button.setBackground(new java.awt.Color(109, 40, 217));
         change_password_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        change_password_button.setForeground(new java.awt.Color(255, 255, 255));
         change_password_button.setText("Cambiar contraseña");
+        change_password_button.setFocusPainted(false);
+        change_password_button.setFocusable(false);
         change_password_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 change_password_buttonActionPerformed(evt);
             }
         });
 
-        user_label.setFont(new java.awt.Font("Leelawadee UI", 1, 16)); // NOI18N
-        user_label.setText("Cambiar contraseña de: ");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(user_label, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(password_label)
+                        .addGap(80, 80, 80)
+                        .addComponent(password_input))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(change_password_button, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cpassword_label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cpassword_input)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(user_label)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(password_label)
+                    .addComponent(password_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cpassword_label)
+                    .addComponent(cpassword_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(change_password_button, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(password_label)
-                    .addComponent(cpassword_label))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(password_input, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(cpassword_input))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(user_label)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(169, Short.MAX_VALUE)
-                .addComponent(change_password_button, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(user_label)
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(password_label)
-                    .addComponent(password_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cpassword_label)
-                    .addComponent(cpassword_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(change_password_button, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -137,6 +157,7 @@ public class RecoverStep2 extends javax.swing.JFrame {
     private javax.swing.JButton change_password_button;
     private javax.swing.JPasswordField cpassword_input;
     private javax.swing.JLabel cpassword_label;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField password_input;
     private javax.swing.JLabel password_label;
     private javax.swing.JLabel user_label;
