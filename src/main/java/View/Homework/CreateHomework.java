@@ -39,12 +39,13 @@ public class CreateHomework extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         title_label = new javax.swing.JLabel();
-        name_input = new javax.swing.JTextField();
         name_label = new javax.swing.JLabel();
         date_label = new javax.swing.JLabel();
-        date_input = new com.github.lgooddatepicker.components.DatePicker();
         content_label = new javax.swing.JLabel();
+        name_input = new javax.swing.JTextField();
+        date_input = new com.github.lgooddatepicker.components.DatePicker();
         content_input = new javax.swing.JScrollPane();
         content_inputx = new javax.swing.JTextArea();
         return_button = new javax.swing.JToggleButton();
@@ -52,90 +53,112 @@ public class CreateHomework extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        title_label.setFont(new java.awt.Font("Leelawadee UI", 3, 14)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(55, 65, 81));
+
         title_label.setText("Nueva tarea para: ");
+        title_label.setFont(new java.awt.Font("Leelawadee UI", 3, 14)); // NOI18N
+        title_label.setForeground(new java.awt.Color(255, 255, 255));
+
+        name_label.setText("Nombre de la tarea:");
+        name_label.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        name_label.setForeground(new java.awt.Color(255, 255, 255));
+
+        date_label.setText("Fecha de Expiración:");
+        date_label.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        date_label.setForeground(new java.awt.Color(255, 255, 255));
+
+        content_label.setText("Contenido:");
+        content_label.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        content_label.setForeground(new java.awt.Color(255, 255, 255));
 
         name_input.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
 
-        name_label.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        name_label.setText("Nombre de la tarea:");
-
-        date_label.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        date_label.setText("Fecha de Expiración:");
-
-        content_label.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        content_label.setText("Contenido:");
-
         content_inputx.setColumns(20);
-        content_inputx.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         content_inputx.setRows(5);
+        content_inputx.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         content_input.setViewportView(content_inputx);
 
-        return_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         return_button.setText("Regresar");
+        return_button.setBackground(new java.awt.Color(109, 40, 217));
+        return_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        return_button.setForeground(new java.awt.Color(255, 255, 255));
         return_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 return_buttonActionPerformed(evt);
             }
         });
 
-        save_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         save_button.setText("Guardar");
-        save_button.setActionCommand("Guardar");
+        save_button.setBackground(new java.awt.Color(109, 40, 217));
+        save_button.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        save_button.setForeground(new java.awt.Color(255, 255, 255));
         save_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 save_buttonActionPerformed(evt);
             }
         });
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(name_label)
+                            .addComponent(date_label))
+                        .addGap(63, 63, 63)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(name_input, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+                            .addComponent(date_input, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(content_input, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(content_label)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(return_button, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(title_label)
+                        .addGap(22, 22, 22)
+                        .addComponent(name_label)
+                        .addGap(18, 18, 18)
+                        .addComponent(date_label))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(name_input, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(date_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(content_label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(content_input, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(return_button, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(save_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(content_input)
-                    .addComponent(title_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(name_label)
-                            .addComponent(date_label))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(date_input, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                            .addComponent(name_input)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(content_label)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(return_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(save_button)))
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(title_label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(name_input, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(name_label))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(date_label)
-                    .addComponent(date_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(content_label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(content_input, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(return_button)
-                    .addComponent(save_button))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -187,6 +210,7 @@ public class CreateHomework extends javax.swing.JFrame {
     private javax.swing.JLabel content_label;
     private com.github.lgooddatepicker.components.DatePicker date_input;
     private javax.swing.JLabel date_label;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField name_input;
     private javax.swing.JLabel name_label;
     private javax.swing.JToggleButton return_button;
